@@ -22,20 +22,20 @@ public class Venda {
 
     public double getTotal() {
         double total = 0.0;
-        for(ItemDeVenda item : itens){
+        for (ItemDeVenda item : itens) {
             total += item.getSubTotal();
         }
         return total;
     }
 
-    public void registrarVenda(Produto produto, int quantidade) {
+    public void registrarVenda(ProdutoComponente produto, int quantidade) {
         ItemDeVenda item = new ItemDeVenda(produto, quantidade);
         itens.add(item);
     }
 
     public String emitirComprovante() {
         StringBuilder nota = new StringBuilder();
-        nota.append(String.format("COMPROVANTE DE VENDA%n"));
+        nota.append(String.format("----- COMPROVANTE DE VENDA -----%n"));
         nota.append(data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")));
         nota.append("\n");
         for (ItemDeVenda item : itens) {
